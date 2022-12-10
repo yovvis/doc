@@ -63,6 +63,15 @@ net user
 
 
 
+## Linux
+
+```shell
+--切换目录
+cd /
+--
+ll
+```
+
 
 
 ## Node.js
@@ -71,7 +80,12 @@ net user
 npm install
 ~~~
 
+## Git
 
+~~~shell
+//拉代码
+git clone -b main http://192.168.0.200/product-group/.git
+~~~
 
 ## java
 
