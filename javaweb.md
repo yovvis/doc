@@ -4,7 +4,7 @@
 
 ### 1.1静态web
 
-![image-20220313133025611](https://raw.githubusercontent.com/tyangjian/picture/main/javaweb/202210171051024.png)
+![image-20220313133025611](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javaweb/202210171051024.png)
 
 静态web存在的缺点： 数据无法持久化，用户无法交互
 
@@ -14,7 +14,7 @@
 
 优点：可以动态更新！！！可以交互！！！数据持久化（注册）
 
-![image-20220313134346000](https://raw.githubusercontent.com/tyangjian/picture/main/javaweb/202210171051379.png)
+![image-20220313134346000](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javaweb/202210171051379.png)
 
 ## 2、web服务器
 
@@ -38,7 +38,7 @@ jsp：servlet  sun公司主推的B/S（浏览/服务器）架构C/S（客户端/
 
 2、闪退问题，需要改兼容
 
-![image-20220313140406516](https://raw.githubusercontent.com/tyangjian/picture/main/javaweb/202210171051360.png)
+![image-20220313140406516](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javaweb/202210171051360.png)
 
 tomcat：8080
 
@@ -50,7 +50,7 @@ https：443
 
 **网站是如何访问的**
 
-![image-20220313142431705](https://raw.githubusercontent.com/tyangjian/picture/main/javaweb/202210171052552.png)
+![image-20220313142431705](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javaweb/202210171052552.png)
 
 ## 4、Http
 
@@ -132,7 +132,7 @@ maven仓库可以自动帮我们导入jar包
 
 核心思想：**约定大于配置**
 
-![image-20220313145930777](https://raw.githubusercontent.com/tyangjian/picture/main/javaweb/202210171052591.png)
+![image-20220313145930777](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javaweb/202210171052591.png)
 
 ### 5.2阿里云镜像下载
 
@@ -154,11 +154,11 @@ maven仓库可以自动帮我们导入jar包
 
 ### 5.3标记文件夹功能
 
-![image-20220313152421182](https://raw.githubusercontent.com/tyangjian/picture/main/javaweb/202210171052500.png)
+![image-20220313152421182](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javaweb/202210171052500.png)
 
 ### 5.4虚拟路径映射
 
-![image-20220313154154468](https://raw.githubusercontent.com/tyangjian/picture/main/javaweb/202210171052077.png)
+![image-20220313154154468](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javaweb/202210171052077.png)
 
 ## 6、Servlet
 
@@ -205,7 +205,7 @@ maven必须上4.0不然没有<parent>
 
 ### 6.4Servlet运行原理
 
-![image-20220313213357616](https://raw.githubusercontent.com/tyangjian/picture/main/javaweb/202210171052208.png)
+![image-20220313213357616](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javaweb/202210171052208.png)
 
 ### 6.5Mapping
 
@@ -219,7 +219,7 @@ maven必须上4.0不然没有<parent>
 
 ### 6.6ServletContext
 
-![image-20220314090808627](https://raw.githubusercontent.com/tyangjian/picture/main/javaweb/202210171052469.png)
+![image-20220314090808627](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javaweb/202210171052469.png)
 
 #### 1、共享数据：
 
@@ -243,7 +243,7 @@ Servlet01： this.getServletContext创建一个Context对象，然后用getAttri
         context.getRequestDispatcher("/hello	").forward(req,resp);
 ```
 
-![image-20220314103937791](https://raw.githubusercontent.com/tyangjian/picture/main/javaweb/202210171052444.png)
+![image-20220314103937791](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javaweb/202210171052444.png)
 
 #### 4、读取资源文件
 
@@ -430,7 +430,7 @@ session
 
 ### 7.3Cookie
 
-![image-20220318134344545](https://raw.githubusercontent.com/tyangjian/picture/main/javaweb/202210171053092.png)
+![image-20220318134344545](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javaweb/202210171053092.png)
 
 常见应用，网站登录下次不用再输入
 
@@ -490,7 +490,7 @@ session
 
 ### 7.4Session
 
-![image-20220318134456632](https://raw.githubusercontent.com/tyangjian/picture/main/javaweb/202210171053036.png)
+![image-20220318134456632](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javaweb/202210171053036.png)
 
 - 服务器会给每个浏览器创建一个session对象
 - 一个session独占一个浏览器，浏览器不关闭，这个session一直存在
@@ -561,7 +561,7 @@ java service pages  和servlet用于动态web技术
 
     idea中tomcat会在地下生成work目录
 
-![image-20220318140106347](https://raw.githubusercontent.com/tyangjian/picture/main/javaweb/202210171053730.png)
+![image-20220318140106347](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javaweb/202210171053730.png)
 
 ### 8.1jsp原理
 
@@ -579,15 +579,15 @@ jsp本质上就是一个servlet
 
 2、内置对象
 
-![image-20220318142532385](https://raw.githubusercontent.com/tyangjian/picture/main/javaweb/202210171053770.png)
+![image-20220318142532385](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javaweb/202210171053770.png)
 
 3、输出页面前增加的代码
 
-![image-20220318142544427](https://raw.githubusercontent.com/tyangjian/picture/main/javaweb/202210171053432.png)
+![image-20220318142544427](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javaweb/202210171053432.png)
 
 4、以上这些对象在jsp中可以直接使用
 
-![image-20220318142835651](https://raw.githubusercontent.com/tyangjian/picture/main/javaweb/202210171053379.png)
+![image-20220318142835651](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javaweb/202210171053379.png)
 
 在jsp界面中就原封不动的输出，如果是html代码就会转化为out.write
 
@@ -744,7 +744,7 @@ JVM中的双亲委派机制
 <h1>取出的值为<%=name5%>></h1>//null
 ```
 
-![image-20220321200730381](https://raw.githubusercontent.com/tyangjian/picture/main/javaweb/202210171053447.png)
+![image-20220321200730381](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javaweb/202210171053447.png)
 
 request：客户端向服务器发送请求，产生的数据用户看完一次就没了：新闻
 
@@ -795,7 +795,7 @@ JSTL表达库
 
 引入jstl核心标签库
 
-![image-20220323153553940](https://raw.githubusercontent.com/tyangjian/picture/main/javaweb/202210171054714.png)
+![image-20220323153553940](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javaweb/202210171054714.png)
 
 JSTL标签库使用步骤
 
@@ -807,4 +807,4 @@ JSTL标签库使用步骤
 
   在tomcat中也需要引入jstl包和stand包
 
-![image-20220401131213610](https://raw.githubusercontent.com/tyangjian/picture/main/javaweb/202210171054561.png)
+![image-20220401131213610](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javaweb/202210171054561.png)
