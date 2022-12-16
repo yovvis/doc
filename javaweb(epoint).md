@@ -12,17 +12,17 @@ C/S架构：客户端/服务器
 
 ## 1、jdbc工作原理
 
-![image-20220704125931763](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171113327.png)
+![image-20220704125931763](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171113327.png)
 
 ## 2、jdbc常用api
 
-![202210171109528](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171131218.png)
+![202210171109528](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171131218.png)
 
 ## 3、jdbc访问数据库过程
 
-![202210171109888](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171131310.png)
+![202210171109888](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171131310.png)
 
-![image-20220704170743829](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171114290.png)
+![image-20220704170743829](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171114290.png)
 
 工程图标右键—>Properties—>java build path —>add external jars—>oracle驱动包ojdbc6.jar
 
@@ -65,7 +65,7 @@ int i = pstmt.executeUpdate();
 boolean flag = pstmt.execute();
 ```
 
-![image-20220704171803862](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171057520.png)
+![image-20220704171803862](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171057520.png)
 
 ### 4.结果集
 
@@ -77,21 +77,21 @@ int getInt(int columnIndex);
 void close();
 ```
 
-![image-20220704172132581](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171058220.png)
+![image-20220704172132581](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171058220.png)
 
-![image-20220704172348894](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171058320.png)
+![image-20220704172348894](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171058320.png)
 
-![image-20220704172745888](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171058900.png)
+![image-20220704172745888](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171058900.png)
 
-![image-20220704205550203](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171058646.png)
+![image-20220704205550203](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171058646.png)
 
-![image-20220704210050756](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171058489.png)
+![image-20220704210050756](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171058489.png)
 
 # Maven
 
-![image-20220705071553432](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171058148.png)
+![image-20220705071553432](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171058148.png)
 
-![image-20220705071637684](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171058823.png)
+![image-20220705071637684](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171058823.png)
 
 ```xml
 <localRepository>D:/software/idea/maven/repository</localRepository>//本地仓库地址
@@ -109,11 +109,11 @@ void close();
 </mirror>
 ```
 
-![image-20220705080812981](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171107422.png)
+![image-20220705080812981](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171107422.png)
 
-![image-20220705081647221](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171058305.png)
+![image-20220705081647221](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171058305.png)
 
-![image-20220705081721652](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171058702.png)
+![image-20220705081721652](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171058702.png)
 
 ## maven指令
 
@@ -126,17 +126,17 @@ mvn package;//打包
 mvn install;//下载
 ```
 
-![image-20220705082901193](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171058230.png)
+![image-20220705082901193](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171058230.png)
 
-![image-20220705083028912](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171058849.png)
+![image-20220705083028912](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171058849.png)
 
-![image-20220705083128314](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171059376.png)
+![image-20220705083128314](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171059376.png)
 
-![image-20220705083212860](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171059927.png)
+![image-20220705083212860](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171059927.png)
 
-![image-20220705090540745](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171059753.png)
+![image-20220705090540745](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171059753.png)
 
-![image-20220705090911366](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171059169.png)
+![image-20220705090911366](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171059169.png)
 
 ## 创建Maven工程
 
@@ -146,7 +146,7 @@ mvn install;//下载
 3.右键项目properties设置project facts中的web moudle和java
 ```
 
-![image-20220705091048810](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171059250.png)
+![image-20220705091048810](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171059250.png)
 
 ```xml
 <!-- 控制编译版本，否则每次maven update的时候都会恢复到1.5 -->
@@ -181,43 +181,43 @@ Run as mavenbuild tomcat7:run
 
 ## 1、javaweb概念
 
-![image-20220705151716459](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171059035.png)
+![image-20220705151716459](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171059035.png)
 
-![image-20220809164801280](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171059457.png)
+![image-20220809164801280](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171059457.png)
 
 ## 2、B/S，C/S
 
-![image-20220705151758004](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171059490.png)
+![image-20220705151758004](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171059490.png)
 
 ## 3、HTTP通信协议
 
-![image-20220705152508957](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171100636.png)
+![image-20220705152508957](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171100636.png)
 
 ### 1.两个协议
 
-![image-20220705153358869](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171100459.png)
+![image-20220705153358869](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171100459.png)
 
 ### 2.请求协议结构
 
-![image-20220705153745120](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171100736.png)
+![image-20220705153745120](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171100736.png)
 
 ### 3.响应协议结构
 
-![image-20220705153944289](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171100143.png)
+![image-20220705153944289](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171100143.png)
 
 ### 4.状态码
 
-![image-20220705154243284](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171100676.png)
+![image-20220705154243284](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171100676.png)
 
-![image-20220705154937583](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171100013.png)
+![image-20220705154937583](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171100013.png)
 
 ### 5.get/post
 
-![image-20220705155557072](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171100444.png)
+![image-20220705155557072](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171100444.png)
 
 ## 4、web工程部署
 
-![image-20220705171149255](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171100760.png)
+![image-20220705171149255](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171100760.png)
 
 ```
 workspace\.metadata\.plugins\org.eclipse.wst.server.core//服务器副本
@@ -229,19 +229,19 @@ workspace\.metadata\.plugins\org.eclipse.wst.server.core//服务器副本
 
 ### 欢迎页
 
-![image-20220705174106969](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171100190.png)
+![image-20220705174106969](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171100190.png)
 
 ### 过滤器
 
-![image-20220705181122885](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171101609.png)
+![image-20220705181122885](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171101609.png)
 
 ### 错误页
 
-![image-20220705184348254](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171101195.png)
+![image-20220705184348254](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171101195.png)
 
 ## 5、Tomcat
 
-![image-20220706073358390](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171101708.png)
+![image-20220706073358390](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171101708.png)
 
 ```
 1.检查是否有jdk
@@ -251,7 +251,7 @@ workspace\.metadata\.plugins\org.eclipse.wst.server.core//服务器副本
 
 ### 1.Tomcat目录结构
 
-![image-20220706075442928](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171101189.png)
+![image-20220706075442928](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171101189.png)
 
 tomcat配置虚拟主机在config	server.xml配置文件中
 
@@ -259,11 +259,11 @@ tomcat配置虚拟主机在config	server.xml配置文件中
 
 ### 2.Tomcat Server结构
 
-![image-20220706075751785](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171101336.png)
+![image-20220706075751785](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171101336.png)
 
 ### 3.部署应用程序
 
-![image-20220706085250659](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171101456.png)
+![image-20220706085250659](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171101456.png)
 
 ```java
 //新增虚拟主机在 C:\windows\system32\drivers\etc\hosts修改dns
@@ -300,19 +300,19 @@ tomcat配置虚拟主机在config	server.xml配置文件中
 
 ### 1.servlet概述
 
-![image-20220706114246925](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171101201.png)
+![image-20220706114246925](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171101201.png)
 
 ### 2.servlet工作原理
 
-![image-20220706114516138](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171101771.png)
+![image-20220706114516138](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171101771.png)
 
 ### 3.servlet生命周期
 
-![image-20220706114611147](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171101150.png)
+![image-20220706114611147](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171101150.png)
 
 ### 4.sertvletconfig
 
-![image-20220708085323247](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171102132.png)
+![image-20220708085323247](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171102132.png)
 
 初始化参数重名只会显示第一个	
 
@@ -338,7 +338,7 @@ System.out.println("service方法被调用");
 
 ### 5.servletContext
 
-![image-20220708091050362](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171102645.png)
+![image-20220708091050362](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171102645.png)
 
 ```
 <context-param>
@@ -358,13 +358,13 @@ System.out.println(contextPath); //  /Servlet
 
 ### 6.servlet相关配置
 
-![image-20220708093502018](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171102436.png)
+![image-20220708093502018](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171102436.png)
 
 /xxx.xx非法
 
 ### 7.request
 
-![image-20220708120916587](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171102166.png)
+![image-20220708120916587](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171102166.png)
 
 ```java
 System.out.println("get");
@@ -392,7 +392,7 @@ while(parameterNames.hasMoreElements()) {
 
 ### 8.response
 
-![image-20220708122509621](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171102612.png)
+![image-20220708122509621](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171102612.png)
 
 ```java
 Cookie cookie = new Cookie("name", "xiao");
@@ -406,20 +406,20 @@ resp.sendRedirect("/");
 
 ### 9.转发和重定向
 
-![image-20220708131859748](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171102803.png)
+![image-20220708131859748](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171102803.png)
 
 ```
 重定向/  （客户端操作）代表localhost:8080
 请求转发/ （服务器操作） webapp/
 ```
 
-![image-20220708131915981](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171102110.png)
+![image-20220708131915981](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171102110.png)
 
 ## 7、Filter
 
 ### 1.工作原理
 
-![image-20220709130756027](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171102961.png)
+![image-20220709130756027](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171102961.png)
 
 ```
 三个方法
@@ -430,7 +430,7 @@ destory()
 
 ### 2.filter的生命周期
 
-![image-20220709130935138](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171102006.png)
+![image-20220709130935138](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171102006.png)
 
 ### 3.filter创建部署
 
@@ -457,13 +457,13 @@ destory()
 
 ### 4.FilterConfig
 
-![image-20220709132704069](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171103348.png)
+![image-20220709132704069](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171103348.png)
 
 ### 5.Filter链
 
-![image-20220709133038540](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171103051.png)
+![image-20220709133038540](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171103051.png)
 
-![image-20220709134812544](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171103803.png)
+![image-20220709134812544](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171103803.png)
 
 ```java
 //字符编码
@@ -492,21 +492,21 @@ if (session.getAttribute("username")!=null) {
 
 ### 1.工作原理
 
-![image-20220709142646294](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171103154.png)
+![image-20220709142646294](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171103154.png)
 
 ### 2.Cookie的创建
 
-![image-20220709150439661](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171103301.png)
+![image-20220709150439661](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171103301.png)
 
 ### 3.Cookie的读取
 
-### ![image-20220709150458079](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171103755.png)4.Cookie的常用方法
+### ![image-20220709150458079](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171103755.png)4.Cookie的常用方法
 
-![image-20220709150508104](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171103712.png)
+![image-20220709150508104](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171103712.png)
 
 ### 5.Cookie的分类
 
-![image-20220709150520369](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171103015.png)
+![image-20220709150520369](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171103015.png)
 
 ### 6.Cookie的限制
 
@@ -522,15 +522,15 @@ if (session.getAttribute("username")!=null) {
 
 ### 1.Session对象的获取
 
-![image-20220709150908640](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171103069.png)
+![image-20220709150908640](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171103069.png)
 
 ### 2.常用方法
 
-![image-20220709150932060](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171103110.png)
+![image-20220709150932060](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171103110.png)
 
 ### 3.设置有效时间
 
-![image-20220709150955788](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171103565.png)
+![image-20220709150955788](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171103565.png)
 
 ### 4.销毁机制
 
@@ -538,35 +538,35 @@ if (session.getAttribute("username")!=null) {
 - 超出session的最大有效时间
 - 服务器卸载了当前的web应用
 
-![image-20220709151127504](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171104196.png)
+![image-20220709151127504](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171104196.png)
 
 ## 10、Ajax
 
 ### 1.工作原理
 
-![image-20220710230301853](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171104987.png)
+![image-20220710230301853](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171104987.png)
 
 ### 2.XMLHttpres对象
 
-![image-20220710230342472](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171104401.png)
+![image-20220710230342472](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171104401.png)
 
 ### 3.XHR常用属性
 
-![image-20220710230446642](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171104679.png)
+![image-20220710230446642](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171104679.png)
 
 ### 4.XHR常用方法
 
-![image-20220710230637447](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171104254.png)
+![image-20220710230637447](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171104254.png)
 
 ### 5.向服务器发送请求
 
-![image-20220710230809965](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171104025.png)
+![image-20220710230809965](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171104025.png)
 
 ### 6.响应服务器
 
-![image-20220710230858565](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171104869.png)
+![image-20220710230858565](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171104869.png)
 
-![image-20220711084425805](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171104474.png)
+![image-20220711084425805](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171104474.png)
 
 ```html
 //获取XHR对象
@@ -595,19 +595,19 @@ function onButtonClick() {
 }
 ```
 
-![image-20220711154636491](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171108154.png)
+![image-20220711154636491](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171108154.png)
 
 ### 7.Jquery的ajax
 
-![image-20220711133853603](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171105315.png)
+![image-20220711133853603](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171105315.png)
 
 ## 11、JSON
 
 ### 1.语法格式
 
-![image-20220711154826574](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171105439.png)
+![image-20220711154826574](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171105439.png)
 
-![image-20220711154841995](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171105251.png)
+![image-20220711154841995](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171105251.png)
 
 ### 2.json的转化
 
@@ -625,11 +625,11 @@ JSON.stringify(json对象)
 
 ### 3.json的遍历
 
-![image-20220711155950780](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171105008.png)
+![image-20220711155950780](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171105008.png)
 
 ### 4.json对象数组
 
-![image-20220711160059790](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171105991.png)
+![image-20220711160059790](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171105991.png)
 
 ### 5.fastjson库
 
@@ -642,13 +642,13 @@ JSON.stringify(json对象)
 </dependency>
 ```
 
-![image-20220711160422258](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171105252.png)
+![image-20220711160422258](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171105252.png)
 
-![image-20220711161512553](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171105724.png)
+![image-20220711161512553](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171105724.png)
 
 ## 12、fileupload
 
-![image-20220711161935640](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171106433.png)
+![image-20220711161935640](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171106433.png)
 
 ```xml
 <!-- fileload 组件依赖 -->
@@ -667,11 +667,11 @@ JSON.stringify(json对象)
 
 ### 1.上传原理
 
-![image-20220711162519821](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171106301.png)
+![image-20220711162519821](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171106301.png)
 
 ### 2.示例
 
-![image-20220711162623736](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171106446.png)
+![image-20220711162623736](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171106446.png)
 
 ```java
 // 为基于磁盘的文件项创建工厂
@@ -692,7 +692,7 @@ upload.setSizeMax();
 List<FileItem> items = upload.parseRequest(request);
 ```
 
-![image-20220711162828754](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171106431.png)
+![image-20220711162828754](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171106431.png)
 
 ```java
 Iterator<FileItem> iter = items.iterator();
@@ -707,13 +707,13 @@ while (iter.hasNext()) {
 }
 ```
 
-![image-20220711162842752](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171106112.png)
+![image-20220711162842752](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171106112.png)
 
-![image-20220711162912555](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171106657.png)
+![image-20220711162912555](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171106657.png)
 
-![image-20220711162919758](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171106466.png)
+![image-20220711162919758](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171106466.png)
 
-![image-20220711163006066](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171106574.png)
+![image-20220711163006066](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171106574.png)
 
 ### 3.文件下载
 
@@ -721,30 +721,30 @@ while (iter.hasNext()) {
 <a href="a.rar"></a>//右键下载，点击打开
 ```
 
-![image-20220711175202575](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171106092.png)
+![image-20220711175202575](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171106092.png)
 
 ## 13、log4j
 
 ### 1.组成
 
-### ![image-20220711200834414](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171107354.png)	2.输出端
+### ![image-20220711200834414](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171107354.png)	2.输出端
 
-![image-20220711200852937](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171107911.png)
+![image-20220711200852937](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171107911.png)
 
 ### 3.日志格式化
 
-![image-20220711200917422](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171107608.png)
+![image-20220711200917422](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171107608.png)
 
-![image-20220711200926952](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171107977.png)
+![image-20220711200926952](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171107977.png)
 
 ### 4.记录器
 
-![image-20220711200943317](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171107518.png)
+![image-20220711200943317](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171107518.png)
 
-![image-20220711200957062](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171107874.png)
+![image-20220711200957062](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171107874.png)
 
 ### 5.配置文件
 
-![image-20220711201018455](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171107172.png)
+![image-20220711201018455](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171107172.png)
 
-![image-20220711201034857](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/javawebe/202210171107198.png)
+![image-20220711201034857](https://tyangjian.oss-cn-shanghai.aliyuncs.com/javawebe/202210171107198.png)

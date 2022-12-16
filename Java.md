@@ -2,9 +2,9 @@
 
 ## （一）JVM内存机制
 
-![image-20220502164736340](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171042244.png)
+![image-20220502164736340](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171042244.png)
 
-![image-20220426210035735](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171041524.png)
+![image-20220426210035735](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171041524.png)
 
 - jdk8之前：元信息、常量池、静态变量—(存储)—>永久代—(实现)—>方法区
 - jdk8以后：元信息—(存储)—>元空间—(实现)—>方法区              常量池、静态变量—(存储)—>堆
@@ -31,11 +31,11 @@ user——>编写Java字节码程序——>JVM解释（——>机器码——>cp
 
 ## （二）类加载机制
 
-![image-20220426214109405](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171041698.png)
+![image-20220426214109405](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171041698.png)
 
-![image-20220504113118190](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171039101.png)
+![image-20220504113118190](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171039101.png)
 
-![image-20220504113201011](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171042078.png)
+![image-20220504113201011](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171042078.png)
 
 
 
@@ -51,7 +51,7 @@ user——>编写Java字节码程序——>JVM解释（——>机器码——>cp
 - 构造代码块
 - 构造函数
 
-![image-20220502162745697](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171043061.png)
+![image-20220502162745697](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171043061.png)
 
 ## （三）、
 
@@ -108,7 +108,7 @@ user——>编写Java字节码程序——>JVM解释（——>机器码——>cp
 
 ### **6、Java运行机制**
 
-<img src="https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171044349.png" alt="image-20220426120648317" style="zoom: 67%;" />
+<img src="https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171044349.png" alt="image-20220426120648317" style="zoom: 67%;" />
 
 ***JVM：***
 
@@ -124,11 +124,11 @@ user——>编写Java字节码程序——>JVM解释（——>机器码——>cp
 
 ### **1、数据类型**
 
-![image-20220426195645453](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171044569.png)
+![image-20220426195645453](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171044569.png)
 
 基本类型的变量有原始值、引用类型的变量有引用值
 
-![image-20220426200011268](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171044271.png)
+![image-20220426200011268](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171044271.png)
 
 ***0 ：48           A：65        a：97***
 
@@ -186,7 +186,7 @@ if(num == 10){
 
 ### **7、运算符的优先级**
 
-![image-20220427085912659](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171044311.png)
+![image-20220427085912659](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171044311.png)
 
 ### **8、条件语句**
 
@@ -233,7 +233,7 @@ int[ ] str = new int[3];   在Java虚拟机栈内存中有一个str 堆内存中
 
 引用类型使用的初始化
 
-![image-20220428094155569](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171044296.png)
+![image-20220428094155569](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171044296.png)
 
 ```java
 int[] students = new int[2];
@@ -278,11 +278,11 @@ studnets[1] = lee;//就是把lee引用对象的地址给了【1】这里
 
 基本数据类型方法值传递实例/引用数据类型方法传递（实际上是引用变量副本）
 
-![image-20220428123722924](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171044502.png)
+![image-20220428123722924](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171044502.png)
 
 #### **4.方法参数个数可变**
 
-![image-20220428124548450](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171044742.png)
+![image-20220428124548450](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171044742.png)
 
 #### **5.方法递归**
 
@@ -433,7 +433,7 @@ studnets[1] = lee;//就是把lee引用对象的地址给了【1】这里
 
 - super调用父类构造方法必须放在子类构造方法中的第一行，且不能出现this调用构造方法
 - 不管是否使用super显示调用父类的构造方法，初始化类时候，总会调用一次父类的构造方法
-- ![image-20220502155152412](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171044210.png)
+- ![image-20220502155152412](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171044210.png)
 
 ### 4、多态
 
@@ -586,7 +586,7 @@ clas{       ***{ //初始化代码块，在类加载后执行  }***         }
 - 顶级父类（初始化代码块）
 - 顶级父类（构造函数）
 
-![image-20220504162836132](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171044536.png)
+![image-20220504162836132](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171044536.png)
 
 ### 2、单例模式
 
@@ -613,7 +613,7 @@ jre提供一个线程检测和控制，在cpu空间或者内存不足时候自�
 - 无法准确控制垃圾回收的运行，对象失去他的引用后，系统就会合适的时候回收内存
 - 在回收任何对象时候，会先调用他的finalize（），可以让这个对象复活（让一个引用变量重新引用该对象）。
 
-![image-20220504170914668](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171044584.png)
+![image-20220504170914668](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171044584.png)
 
 ***强制回收***
 
@@ -627,7 +627,7 @@ java -verbose:gc Test
 
 ### 1、eclipse使用
 
-![image-20220504181803288](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171045445.png)
+![image-20220504181803288](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171045445.png)
 
 #### 快捷键
 
@@ -641,7 +641,7 @@ Ctrl+Alt+down 复制到下一行
 
 #### 1.异常继承体系
 
-![image-20220504205311177](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171045228.png)
+![image-20220504205311177](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171045228.png)
 
 
 
@@ -786,7 +786,7 @@ String.format(String  format，Object...)
 - ***,数字分组***
 - ***(括号包含复数***
 
-![image-20220505175808820](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171045433.png)
+![image-20220505175808820](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171045433.png)
 
 String字符串的不可变性
 
@@ -885,7 +885,7 @@ cal.setLenient(false)//关闭容错
 
 ##### ***java.time包***
 
-![image-20220505194322352](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171046519.png)
+![image-20220505194322352](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171046519.png)
 
 ##### ***SimpleDateFormat类***
 
@@ -914,17 +914,17 @@ sdf.parse(timeInfo)//字符串变成日期
 
 Java中的转义字符\\\
 
-![image-20220505200036994](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171046839.png)
+![image-20220505200036994](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171046839.png)
 
-![image-20220505200201054](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171046802.png)
+![image-20220505200201054](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171046802.png)
 
 Pattern类：是正则表达式编译后在内存中的形式
 
 Match类：多个Matcher对象可以共享一个Pattern对象
 
-![image-20220505200555837](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171046630.png)
+![image-20220505200555837](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171046630.png)
 
-![image-20220505200732513](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171046123.png)
+![image-20220505200732513](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171046123.png)
 
 ## （八）集合泛型
 
@@ -934,7 +934,7 @@ Match类：多个Matcher对象可以共享一个Pattern对象
 
 **集合层次图**
 
-![image-20220506150441104](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171046337.png)
+![image-20220506150441104](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171046337.png)
 
 **常见方法**
 
@@ -1104,7 +1104,7 @@ class Generic<T>{
 
 ##### **1.Map**
 
-![image-20220508181245630](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171046132.png)
+![image-20220508181245630](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171046132.png)
 
 
 
@@ -1320,7 +1320,7 @@ boolean accept(File dir, String name)
 
 **流的概念**（stream）
 
-![image-20220511150035724](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171046310.png)
+![image-20220511150035724](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171046310.png)
 
 根据流向：输入流和输出流
 
@@ -1328,7 +1328,7 @@ boolean accept(File dir, String name)
 
 ***常见IO流***
 
-![image-20220511152320780](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171046676.png)
+![image-20220511152320780](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171046676.png)
 
 #### **1.InputStream**	
 
@@ -1371,11 +1371,11 @@ boolean accept(File dir, String name)
 		getFiles(files);
 		
 
-![image-20220511164328347](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171047487.png)
+![image-20220511164328347](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171047487.png)
 
 #### **4.FileOutputStream**
 
-![image-20220511171626890](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171047558.png)
+![image-20220511171626890](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171047558.png)
 
 #### ---------------
 
@@ -1414,7 +1414,7 @@ FileReader(String filepath)
 
 FileReader(File fileObj)
 
-![image-20220511174608482](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171047843.png)
+![image-20220511174608482](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171047843.png)
 
 #### **8.FileWriter**
 
@@ -1505,7 +1505,7 @@ int read()// 读取一个字符
 
 int read(char[] cbuf,int offset, int length)//将字符读入数组的一部分呢
 
-![image-20220511181629582](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171047853.png)
+![image-20220511181629582](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171047853.png)
 
 #### **13.OutputStreamWriter**
 
@@ -1567,7 +1567,7 @@ oos.writeObject(new Student);
 
 **不需要序列化的字段怎么处理：**
 
-![image-20220511184025740](https://tyangjian-1315233939.cos.ap-shanghai.myqcloud.com/java/202210171047039.png)
+![image-20220511184025740](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171047039.png)
 
 ***序列化应用***
 

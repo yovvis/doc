@@ -4,13 +4,13 @@
 
 查询端口号
 
-```c
+```shell
 netstat -on
 ```
 
 目录操作
 
-~~~c
+~~~shell
 cd D:
 cd ../xxx/xxx
 cd ./
@@ -18,13 +18,13 @@ cd ./
 
 清空命令行
 
-~~~c
+~~~shell
 cls
 ~~~
 
 查看ip
 
-~~~c
+~~~shell
 ipconfig
 ~~~
 
@@ -36,7 +36,7 @@ ping www.baidu.com
 
 查看网络连接状态
 
-~~~c
+~~~shell
 //获取命令行使用帮助
 netstat -help
 //查看网络连接、状态以及对应的进程id
@@ -45,19 +45,19 @@ netstat -ano
 
 终止命令
 
-~~~c
+~~~shell
 ctrl + c
 ~~~
 
 退出cmd
 
-~~~c
+~~~shell
 exit
 ~~~
 
 查看用户
 
-~~~c
+~~~shell
 net user
 ~~~
 
@@ -76,7 +76,7 @@ ll
 
 ## Node.js
 
-~~~xml
+~~~shell
 npm install
 ~~~
 
@@ -233,6 +233,45 @@ for (var tmp in data) {
         data[tmp][i].img = _rootPath + "rest/zysyphotoserver/getuserimg?userGuid=" + userguid;
      }
  }
+~~~
+
+### 3、处理身份证号码
+
+~~~js
+function getAgeByIdCard(idcard) {
+			//获取出生年月日
+			var yearBirth = idcard.substring(6, 10);
+			var monthBirth = idcard.substring(10, 12);
+			var dayBirth = idcard.substring(12, 14);
+			//获取当前年月日并计算年龄
+			var myDate = new Date();
+			var monthNow = myDate.getMonth() + 1;
+			var dayNow = myDate.getDay();
+			var age = myDate.getFullYear() - yearBirth;
+			if (monthNow < monthBirth || (monthNow == monthBirth && dayNow < dayBirth)) {
+				age--;
+			}
+			return age;
+		}
+		//根据证件号计算出生日期
+		function getBirthdateByIdCard(idcard) {
+			if (eputil.idCardValidate(idcard) == '') {
+				birthday = idcard.substring(6, 10) + "-" + idcard.substring(10, 12) + "-" + idcard.substring(12, 14);
+			}
+			return birthday;
+		}
+
+		// 读取身份证中性别值
+		function getSexByIdCard(idcard) {
+			// 获取性别
+			if (parseInt(idcard.substr(16, 1)) % 2 == 1) {
+				// 男
+				return "1";
+			} else {
+				// 女
+				return "2";
+			}
+		}
 ~~~
 
 
