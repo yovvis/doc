@@ -51,9 +51,39 @@ user——>编写Java字节码程序——>JVM解释（——>机器码——>cp
 - 构造代码块
 - 构造函数
 
-![image-20220502162745697](https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202210171043061.png)
+<img src="https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202212191649796.png" alt="image-20220502162745697" style="zoom: 67%;" />
 
-## （三）、
+## （三）、反射机制
+
+- java反射机制是在运行状态中，对于任意一个类，都能知道这个类的所有属性和方法。反射是动态调用对象、动态获取信息。
+
+  优点缺点
+
+  <img src="https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202212191650675.png" alt="image-20221219164305199" style="zoom:50%;" />
+
+反射的调用
+
+<img src="https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202212191650519.png" alt="image-20221219164446293" style="zoom:50%;" />
+
+class对象的三种方式
+
+<img src="https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202212191650543.png" alt="image-20221219164535616" style="zoom:67%;" />
+
+生成类对象
+
+<img src="https://tyangjian.oss-cn-shanghai.aliyuncs.com/temp/202212191646871.png" style="zoom: 50%;" />
+
+获取变量和方法
+
+<img src="https://tyangjian.oss-cn-shanghai.aliyuncs.com/java/202212191652334.png" alt="image-20221219165252241" style="zoom: 67%;" />
+
+### 反射应用
+
+1、Mybatis
+
+2、basedao（find(sql，xxx.class)）
+
+3、dataBean
 
 # **Java**
 
@@ -1668,7 +1698,7 @@ ResourceBundle res1 = ResourceBundle.getBundle("db"，locale1);
 res1.getString("driverName")
 ```
 
+# （十）lambda
 
-
-
+动态传递方法体（或者函数，名称不同，含义一样），自由度更高
 
