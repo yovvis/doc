@@ -155,9 +155,15 @@ BigDecimal bl = bbDecimal.divide(totalDecimal, 3, RoundingMode.HALF_UP);
 bl.multiply(new BigDecimal(100)).setScale(1);
 ~~~
 
-### 3、list中date转成josn格式
+### 3、jdk8新特性
 
 ~~~java
+//lambda表达式
+List<Integer> numbers = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
+List<Integer> squaresList = numbers.stream().map( i -> i*i).distinct().collect(Collectors.toList());
+//stream流
+List<FrameRole> roleList = roleService.listRoleByUserGuid(userSession.getUserGuid());
+roleNameList = roleList.stream().map(FrameRole::getRoleName).collect(Collectors.toList());
 ~~~
 
 
