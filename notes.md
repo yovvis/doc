@@ -87,6 +87,17 @@ npm install
 git clone -b main http://192.168.0.200/product-group/.git
 ~~~
 
+~~~shell
+//idea中初始化项目
+git init
+git add .
+git commit -m "first"
+git remote add origin xxxxx
+git push -u origin "xxx"
+~~~
+
+
+
 ## java
 
 ### 1、内部类实现list内部排序
@@ -279,6 +290,3 @@ function getAgeByIdCard(idcard) {
 			}
 		}
 ~~~
-
-
-
