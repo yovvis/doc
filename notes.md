@@ -166,6 +166,26 @@ List<FrameRole> roleList = roleService.listRoleByUserGuid(userSession.getUserGui
 roleNameList = roleList.stream().map(FrameRole::getRoleName).collect(Collectors.toList());
 ~~~
 
+### 4、map的部分值进行去重
+
+~~~java
+ list.stream().collect(Collectors.collectingAndThen(Collectors.toCollection(()->new TreeSet<>(new Comparator<Map<String,Object>() {
+    @Override
+    public int compare(Map<String, Object> o1, Map<String, Object> o2) {
+        if (o1.get("nodestep").equals(o2.get("nodestep"))&& o1.get("nodename").equals(o2.get("nodename"))){
+            return 0;
+        }
+        return 1;
+    }
+}))));
+~~~
+
+### 5、string[] 转list 去重去空
+
+~~~
+List<String> ouCodeList = Arrays.asList(ouCodeStr).stream().filter(s -> s.trim().length() != 0).collect(Collectors.toList());
+~~~
+
 
 
 ## sql
