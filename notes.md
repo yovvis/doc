@@ -206,7 +206,7 @@ select year(now())-year('1967-10-13') as age
 select ifnull(min(order),999) from a where 1=1;
 ~~~
 
-3、视图
+### 3、视图
 
 ~~~sql
 create or replace view view_talent_apply as
@@ -227,7 +227,13 @@ union all
 select '专业技术职称' as tc,rowguid,username,flowstatus,createdate,ouname from zysy_professional_title_apply;
 ~~~
 
- 
+###  4、一对多拼接
+
+~~~sql
+select a.*, ifnull(group_concat(b.username,'(',b.shortnumber,')' separator '、'),'') as userandnum from zg_bzjl_contact a left join zg_bzjl_contact_user b on a.Rowguid = b.contactguid where oucode ='330600'  group by a.Rowguid 
+~~~
+
+
 
 ## 前端
 
