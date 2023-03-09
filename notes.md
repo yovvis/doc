@@ -65,12 +65,124 @@ net user
 
 ## Linux
 
+### 1.说明
+
+重启           shutdown -r now
+
+编辑           vim 进去要i
+
+退出是esc    :wq   wq不了就先:q！   :/是查找
+
+登录管理员   su root
+
+查看ip    ip addr show
+
+想要回到[root@localhost ~]  就直接cd ~用户
+
+三分组 user group other
+
+权限 r w x
+
+压缩 rpm bin yum
+
+### 2.命令
+
 ```shell
 --切换目录
 cd /
 --
 ll
 ```
+
+修改dphc
+
+```
+vi /etc/sysconfig/network-scripts/ifcfg -e +tap
+```
+
+重启网络
+
+```
+service network restart 172.16.176.143
+```
+
+防火墙
+
+```
+systemctl start firewalld 开启防火墙
+systemctl status firewalld 防火墙状态
+systemctl stop firewalld.service#停止firewall
+systemctl disable firewalld.service#禁止firewall开机启动
+```
+
+ssh服务
+
+```
+systemctl start sshd.service  #启动ssh服务
+systemctl stop sshd.service  #关闭ssh服务
+systemctl restart sshd.service  #重启ssh服务
+systemctl enable sshd.service  #开机自启动ssh服务
+
+ssh连接后可以在ip1下面连接ip2然后exit退出
+```
+
+文件夹操作
+
+```
+mkdir  xxx  创建文件夹
+rm -rf xxx  删除文件夹和下面的信息
+mv x ./xx   移动文件夹
+cp -R x xx  递归拷贝文件夹
+
+cd xxx/		切换路径
+pwd			完整路径	
+cd ../ 		上层
+cd /   		根目录
+ls    		目录下信息
+ls -l 		目录详细内容
+cd ~		用户所在的文件夹
+./xxx		执行某个文件
+
+vi xxx.txt 如果没有就是创建
+```
+
+授权
+
+```
+chown nobody:nobody	xxx.txt	  		完全公开
+chown -R  nobody:nobody test  		完全公开文件夹和他递归的文件
+
+-r可读-w可写-x可执行 用二进制表示的
+user group other 三组
+chmod 777 bbb 						授权文件
+chmod -R 777 test					授权文件夹
+```
+
+安装软件
+
+```shell
+tar -xvf xxx.tar.gz		解压缩文件
+rpm -ivh xxx.rpm		安装单个
+rpm -ivh *.rpm force	安装全部
+./xxxxx.bin  			安装bin包	
+
+yum install docker
+yum install nginx
+```
+
+性能
+
+~~~shell
+cat /proc/cpuinfo   	cpu性能
+top						cpu使用率 yum install epel-release   yum install htop
+df -h 					磁盘空间
+iftop					网络      yum install iftop
+ifconfig				ip        yum install net-tools
+ps -ef |grep xxx 		查看所有进程/某个进程
+>>重定向符号
+ps -ef >>a.txt			进程信息放到txt中
+cat a.txt               仅仅查看
+~~~
 
 
 
