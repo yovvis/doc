@@ -298,6 +298,18 @@ roleNameList = roleList.stream().map(FrameRole::getRoleName).collect(Collectors.
 List<String> ouCodeList = Arrays.asList(ouCodeStr).stream().filter(s -> s.trim().length() != 0).collect(Collectors.toList());
 ~~~
 
+### 6、List<map“>取key值
+
+~~~java
+List<String> userGuidList = feedbackData.stream().map(m -> (String) m.get("userguid")).collect(Collectors.toList());
+~~~
+
+### 7、List<String>去重
+
+~~~java
+List<String> List = list.stream().distinct().collect(Collectors.toList());
+~~~
+
 
 
 ## sql
@@ -343,6 +355,17 @@ select '专业技术职称' as tc,rowguid,username,flowstatus,createdate,ouname 
 
 ~~~sql
 select a.*, ifnull(group_concat(b.username,'(',b.shortnumber,')' separator '、'),'') as userandnum from zg_bzjl_contact a left join zg_bzjl_contact_user b on a.Rowguid = b.contactguid where oucode ='330600'  group by a.Rowguid 
+~~~
+
+### 5、行专列
+
+~~~sql
+select a.rowguid as userguid ,a.username ,a.seclevel ,a.departmentid as ouguid ,a.departmentname as ouname ,b.quater,
+sum(case b.quater when '1' then b.totalscore else null end) as onequaterscore ,
+sum(case b.quater when '2' then b.totalscore else null end) as twoquaterscore ,
+sum(case b.quater when '3' then b.totalscore else null end) as threequaterscore ,
+sum(case b.quater when '4' then b.totalscore else null end) as fourquaterscore 
+from ga_sx_user a left join sx_jxkh_quater_score b on a.RowGuid = b.userguid where userguid = '472.0' and b.year='2023' group by a.RowGuid 
 ~~~
 
 
