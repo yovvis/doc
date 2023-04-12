@@ -6,6 +6,12 @@
 
 ```shell
 netstat -on
+
+netstat -ano |findstr "端口号"
+
+tasklist |findstr "进程id号"
+
+taskkill -PID 5656 -F
 ```
 
 目录操作
@@ -368,7 +374,7 @@ sum(case b.quater when '4' then b.totalscore else null end) as fourquaterscore
 from ga_sx_user a left join sx_jxkh_quater_score b on a.RowGuid = b.userguid where userguid = '472.0' and b.year='2023' group by a.RowGuid 
 ~~~
 
-
+6、
 
 ## 前端
 
