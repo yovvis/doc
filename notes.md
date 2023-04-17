@@ -100,6 +100,193 @@ List<String> userGuidList = feedbackData.stream().map(m -> (String) m.get("userg
 List<String> List = list.stream().distinct().collect(Collectors.toList());
 ~~~
 
+### 8、多线程
+
+~~~java
+// job
+@JobHandler
+public class SxJxScoreResultJob implements Job
+{
+    private static Logger logger = Logger.getLogger(SxUpdateA01OuJob.class);
+
+    Date now = new Date();
+
+    // 10个线程
+    private static final int THREADNUMS = 10;
+
+    @Override
+    public void execute(JobExecutionContext context) throws JobExecutionException {
+        ZgJxScoreResultService scoreResultService = ContainerFactory.getContainInfo().getComponent(ZgJxScoreResultService.class);
+        ExecutorService fixedThreadPool = Executors.newFixedThreadPool(THREADNUMS);
+        try {
+
+            logger.info("----------获取教训结果开始执行----------");
+            // 获取当前年度的所有参与考核的用户数据
+            SxSqlCondition condition = new SxSqlCondition();
+            condition.custom("examdate_year", " and year(examdate) = ? ", EpointDateUtil.getYearOfDate(now));
+            // 人员数
+            int count = scoreResultService.getAllUserNumber(condition);
+
+            // 循环次数
+            int loopNum = THREADNUMS;
+
+            // 单个线程处理数据量
+            int pageSize = count / THREADNUMS + 1;
+
+            if (count <= THREADNUMS) {
+                pageSize = count;
+                loopNum = 1;
+            }
+            for (int i = 0; i < loopNum; i++) {
+                fixedThreadPool.execute(new SxJxScoreResultThread(i * pageSize, pageSize));
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            logger.error("信息更新失败", e);
+        }
+        finally {
+            fixedThreadPool.shutdown();
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+// thread
+public class SxJxScoreResultThread extends Thread
+{
+
+    private static final Logger logger = LoggerFactory.getLogger(Advice.This.class);
+
+    ZgJxScoreResultService scoreResultService = ContainerFactory.getContainInfo().getComponent(ZgJxScoreResultService.class);
+
+    // 开始处
+    private int startNum = 0;
+
+    // 处理数据量
+    private int handleCount = 0;
+
+    private final String year = String.valueOf(EpointDateUtil.getYearOfDate(new Date()));
+
+    public SxJxScoreResultThread(int startNum, int handleCount) {
+        this.startNum = startNum;
+        this.handleCount = handleCount;
+    }
+
+    @Override
+    public void run() {
+        EpointFrameDsManager.begin(null);
+        String pageSize = "500";
+        int pageSizeNum = StringUtil.isBlank(pageSize) ? 1000 : Integer.parseInt(pageSize);
+
+        // 分页页数1w,1000,10次
+        int pageNo = handleCount % pageSizeNum == 0 ? handleCount / pageSizeNum : handleCount / pageSizeNum + 1;
+
+        int endNum = 0;
+        logger.info("-------------------startNum----------------------" + startNum);
+        logger.info("------------------handleCount--------------------" + handleCount);
+        logger.info("------------------pageSizeNum--------------------" + pageSizeNum);
+        logger.info("---------------------pageNo----------------------" + pageNo);
+        logger.info("----------------------year-----------------------" + year);
+        try {
+            SxSqlCondition condition = new SxSqlCondition();
+            condition.custom("examdate_year", " and year(examdate) = ?", year);
+            condition.in("pdlevel", new String[] {"10", "20", "30" });
+            for (int j = 0; j < pageNo; j++) {
+                // 最后一页
+                endNum = j == pageNo - 1 ? startNum + handleCount : startNum + (j + 1) * pageSizeNum;
+
+                logger.info("----------开始分页查询教训数据----------");
+                List<ZgJxScore> userScoreList = scoreResultService.getAllUserDataList(startNum + j * pageSizeNum, endNum - (startNum + j * pageSizeNum), "", "", condition);
+                if (EpointCollectionUtils.isEmpty(userScoreList)) {
+                    return;
+                }
+                for (ZgJxScore jxScore : userScoreList) {
+                    // 判断是否已经有过某个科目的成绩有则修改，无则新增
+                    ZgJxScoreResult result = scoreResultService.findScoreResult(year, jxScore.getUserguid(), jxScore.getExamcourse());
+                    if (result != null) {
+                        // 修改
+                        String resultStr = getResult(year, jxScore.getUserguid(), jxScore.getExamcourse());
+                        result.setResulttype(StringUtil.isNotBlank(resultStr) ? resultStr : "404");
+                        // 计算是否合格
+                        scoreResultService.updateZgJxScoreResult(result, new GaOperateInfo());
+                    }
+                    else {
+                        // 新增
+                        ZgJxScoreResult scoreResult = new ZgJxScoreResult();
+                        scoreResult.setRowguid(UUID.randomUUID().toString());
+                        scoreResult.setUserguid(jxScore.getUserguid());
+                        scoreResult.setUsername(jxScore.getUsername());
+                        scoreResult.setAge(jxScore.getAge());
+                        scoreResult.setExamcourse(jxScore.getExamcourse());
+                        scoreResult.setPolicenum(jxScore.getPolicenum());
+                        scoreResult.setPolicedate(jxScore.getPolicedate());
+                        scoreResult.setExamtype(jxScore.getExamtype());
+                        scoreResult.setOucode(jxScore.getOucode());
+                        scoreResult.setOuname(jxScore.getOuname());
+                        scoreResult.setYear(year);
+                        String resultStr = getResult(year, jxScore.getUserguid(), jxScore.getExamcourse());
+                        scoreResult.setResulttype(StringUtil.isNotBlank(resultStr) ? resultStr : "404");
+                        // 计算结果
+                        getResult(year, jxScore.getUserguid(), jxScore.getExamcourse());
+                        scoreResultService.insertZgJxScoreResult(scoreResult, new GaOperateInfo());
+                    }
+                }
+
+            }
+            EpointFrameDsManager.commit();
+        }
+        catch (Exception e) {
+            EpointFrameDsManager.rollback();
+            e.printStackTrace();
+
+        }
+        finally {
+            EpointFrameDsManager.close();
+        }
+    }
+
+    /**
+     * 计算结果
+     *
+     * @param userGuid
+     * @return String
+     **/
+    private String getResult(String year, String userGuid, String examCourse) {
+        SxSqlCondition condition = new SxSqlCondition();
+        condition.exact("userguid", userGuid);
+        condition.custom("examdate_year", " and year(examdate) = ?", year);
+        condition.exact("examcourse", examCourse);
+
+        Record rec = scoreResultService.getWhichLevel(condition);
+        if (rec.getInt("province") > 0) {
+            // 按照省级来获取最新的达标情况
+            condition.exact("pdlevel", "10");
+            List<String> resultStr = scoreResultService.getCourseResult(condition);
+            if (EpointCollectionUtils.isNotEmpty(resultStr)) {
+                return resultStr.get(0);
+            }
+
+        }
+        else if (rec.getInt("city") > 0) {
+            condition.exact("pdlevel", "20");
+            List<String> resultStr = scoreResultService.getCourseResult(condition);
+            if (EpointCollectionUtils.isNotEmpty(resultStr)) {
+                return resultStr.get(0);
+            }
+        }
+        else if (rec.getInt("xj") > 0) {
+            condition.exact("pdlevel", "30");
+            List<String> resultStr = scoreResultService.getCourseResult(condition);
+            if (EpointCollectionUtils.isNotEmpty(resultStr)) {
+                return resultStr.get(0);
+            }
+        }
+        return "";
+    }
+}
+
+~~~
+
 
 
 ## sql
