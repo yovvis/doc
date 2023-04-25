@@ -382,6 +382,18 @@ from mx_zzgl_rybase where zj in ('0101','0102','0203','0204','0205','0206')
 group by zj order by zj asc
 ~~~
 
+### 7、脱敏
+
+~~~sql
+-- 姓名
+update userinfo SET username = rpad(substring(username, 1, 1 ), char_length(username), '*' ) where 1=1
+-- 电话
+update userinfo SET username = CONCAT(LEFT (username, 3 ), '****' ,RIGHT(username,4)) where 1=1
+-- 单位
+update ouinfo SET ouname = REPLACE (ouname, SUBSTRING(ouname,1,2),'**' ) WHERE ouname regexp '市'
+
+~~~
+
 
 
 ## 前端
