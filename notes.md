@@ -287,6 +287,21 @@ public class SxJxScoreResultThread extends Thread
 
 ~~~
 
+### 9、List<Map>分组
+
+~~~java
+Map<String, List<Map<String, Object>>> mapList = feedbackData.stream().collect(Collectors.groupingBy(e -> e.get("ouguid").toString()));
+~~~
+
+### 10、List<对象> 过滤
+
+~~~java
+// 迭代器
+listAllChirldList.removeIf(sxOu -> gaSxOu.getRowguid().equals(sxOu.getRowguid()));
+// stream流
+listAllChirldList.stream().filter(sxOu-> !gaSxOu.getRowguid().equals(sxOu.getRowguid())).collect(Collectors.toList()
+~~~
+
 
 
 ## sql
