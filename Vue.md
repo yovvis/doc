@@ -1,6 +1,6 @@
 # Vue核心
 
-## Vue简介
+## 1.1Vue简介
 
 > VueApi
 > 
@@ -57,7 +57,7 @@ const x = new Vue({
 1. 表达式有值
 2. js代码是语句，是代码片段
 
-## 模板语法
+## 1.2模板语法
 
 1. 插值语法：
     1. 功能：用于解析***标签体***
@@ -67,7 +67,7 @@ const x = new Vue({
     2. 举例：v-bind:href=’xxx’ 或者简写 :href=‘xxx’，这里的xxx也是js表达式，且可以获取到data里面所有属性
     3. 备注：Vue中很多指令都是v-???，这里v-bind是其中一个
 
-## 数据绑定
+## 1.3数据绑定
 
 v-bind：
 
@@ -78,7 +78,7 @@ v-model：
 1. 双向绑定（必须要交互的，只能应用在表单类元素）
 2. v-model默认收集的是value值，因此***v-model:value = v-model***
 
-## el与data的写法
+## 1.4el与data的写法
 
 ***el***
 
@@ -90,7 +90,7 @@ v-model：
 1. 对象式  data：+json
 2. 函数式  data:   function(){} this返回的是***Vue实例***  不能用data:()— >{} 箭头函数找不到this，this是***BOM对象***     
 
-## MVVM模型
+## 1.5MVVM模型
 
 <img src="https://tyangjian.oss-cn-shanghai.aliyuncs.com/tmp/202306051743266.png" alt="MVVM模型" style="zoom:50%;" />
 
@@ -101,7 +101,7 @@ MVVM模型
 1. data中所有的属性，最后都出现在vm身上
 2. vm身上所有的属性及Vue原型上所有属性，在Vue模板中都是可以直接使用
 
-## 数据代理
+## 1.6数据代理
 
 ### defineProperty函数
 
@@ -179,7 +179,7 @@ _data里面做了***数据劫持***
     通过Object.defineProperty()把data对象中所有属性添加到vm上，且指定一个getter和setter，用getter和setter操作data中的属性
     
 
-## 事件处理
+## 1.7事件处理
 
 ```jsx
 <button v-on:click="showInfo">欢迎来到yovvis(不传参)</button>
@@ -188,19 +188,19 @@ const x = new Vue({
     el: '#root', //el用于指定当前Vue实例为哪个div容器服务
     data: {// 用于存储数据，数据供el指定的容器使用
         name: 'Yovvis',
-				url: 'https:www.baidu.com' //要用指令语法
+            url: 'https:www.baidu.com' //要用指令语法
     },
 		method: {
-				showInfo(event){
-						// event就是<button></button>
-						console.log(this);// this就是vm
-						alert(event);
-				},
-				showInfo2(num,event){
-					// event就是<button></button>
-					console.log(this);// this就是vm
-					alert(event);
-				}
+            showInfo(event){
+                    // event就是<button></button>
+                    console.log(this);// this就是vm
+                    alert(event);
+            },
+            showInfo2(num,event){
+                // event就是<button></button>
+                console.log(this);// this就是vm
+                alert(event);
+            }
 		}
 })
 ```
@@ -214,6 +214,10 @@ const x = new Vue({
 5. @click="demo”和@click=""demo($event)”效果一致，但后者可以传参;
 
 ### 事件修饰符
+
+~~~js
+@click.xxx=""
+~~~
 
 vue中的事件修饰符:
 
@@ -263,7 +267,7 @@ div（外）——>div（内）***捕获*** ——内——>外冒泡
 
 ***键盘可以连写***
 
-## 计算属性
+## 1.8计算属性
 
 在Vue中data里面是属性，通过data里面属性操作后生成的属性
 
@@ -303,15 +307,404 @@ _data中是不会有计算属性的
 ```jsx
 computed:{
 	fullName: function(){
-			return this.firstName + "-" + this.lastName;
+        return this.firstName + "-" + this.lastName;
 	}
 }
 computed:{
 	fullName(){
-			return this.firstName + "-" + this.lastName;
+        return this.firstName + "-" + this.lastName;
 	}
 }
 
 ```
 
 ***注意：***@click=“isHot ? ‘炎热’：’凉爽’”，事件中可以直接写返回语句，但是一定是定义在data里面的属性
+
+## 1.9监视属性
+
+两个方法，在创建实例的时候想监视的时候用**<u>*法一*</u>**
+
+~~~js
+watch: {
+    isHot:{
+        immediate:true,// 初始化的时候让handler调用一下（也就是isHot发生改变的时候）
+    	handler(newValue,oldValue){
+            console.log('isHot被修改了',newValue,oldValue)
+        }
+    }
+}
+~~~
+
+或者
+
+~~~js
+vm.$watch('isHot',{
+ 	immediate:true,// 初始化的时候让handler调用一下（也就是isHot发生改变的时候）
+    handler(newValue,oldValue){
+        console.log('isHot被修改了',newValue,oldValue)
+    }
+})
+~~~
+
+### 总结
+
+监视属性watch:
+
+1. 当被监视的属性变化时，回调函数自动调用，进行相关操作
+2. 监视的属性必须存在，才能进行监视!!
+3. 监视的两种写法:
+	1. new Vue时传入watch配置
+	2. 通过vm.$watch监视
+
+### 深度监视
+
+~~~js
+data:{
+    numbers:{
+        a:1,
+        b:1
+    }
+}
+watch:{
+    numbers:{
+        //'numbers.a':{},
+        deep:true,
+        handle(){
+            console.log('isHot被修改了',newValue,oldValue)
+        }
+	}
+}
+~~~
+
+#### 总结
+
+1. vue中的watch默认不监测对象内部值的改变(一层）
+2. 配置deep:true可以监测对象内部值改变（多层）
+
+#### 备注
+
+1. Vue自身可以监测对象内部值的改变，但Vue提供的watch默认不可以!
+2. 使用watch时根据数据的具体结构，决定是否采用深度监视。
+
+### 监视简写
+
+简写形式的前提：1、不需要immediate2、不需要深度监视
+
+~~~js
+watch:{
+    isHot(newValue,oldValue){
+     	console.log('isHot被修改了',newValue,oldValue)
+    }
+}
+~~~
+
+~~~js
+vm.$watch('isHot',function(newValue , oldValue){
+    console.log('isHot被修改了',newValue,oldValue)
+})
+~~~
+
+### 监视和计算属性
+
+computed和lwatch之间的区别:
+
+1. computed能完成的功能,watch都可以完成。
+2. watch能完成的功能，computed不一定能完成，例如: watch可以进行异步操作。
+
+两个重要的小原则:
+
+1. 所被Vue管理的函数，最好写成普通函数，这样this的指向才是vm或组件实例对象。
+2. 所有不被Vue所管理的函数（定时器的回调函数、ajax的回调函数,Promise的回调函数等)，最好写成箭头函数，这样this的指向才是vm或组件实例对象。
+
+## 1.10绑定CSS样式
+
+- .basic
+- .happy .sad .normal
+- yovvis1
+- yovvis2
+- yovvis3
+
+1. 用v-bind或者：控制class
+2. js生成随机数Math.floor(Math.random()*3)向下取整
+3. arr.push()和arr.shift()
+
+### 总结
+
+绑定样式:
+
+1. class样式
+
+	写法:class="xxx" xxx可以是字符串、对象、数组。
+
+	字符串写法适用于:类名不确定，要动态获取。
+
+	对象写法适用于:要绑定多个样式，个数不确定，名字也不确定。
+
+	数组写法适用于:要绑定多个样式，个数确定，名字也确定，但不确定用不用。
+
+2. style样式
+
+	: style="{fontsize: xxx]"其中xxx是动态值。
+
+	: style="[a,b]"其中a、b是样式对象。
+
+## 1.11条件渲染
+
+~~~js
+<div v-if="n==1">aaa</div>
+~~~
+
+条件渲染:
+
+1. v-if
+
+	写法：
+
+	​	(1).v-if="表达式"
+
+	​	(2).v-else-if="表达式"
+
+	​	(3).v-else="表达式"
+
+	适用于:切换频率较低的场景。
+
+	特点:不展示的DOM元素直接被移除。
+
+	注意:v-if可以和:v-else-if、v-else一起使用，但要求结构不能被“打断”
+
+2. v-show
+
+	写法: v-show="表达式"
+
+	适用于:切换频率较高的场景。
+
+	特点:不展示的DOM元素未被移除，仅仅是使用样式隐藏掉
+
+3. 备注:使用v-if的时，元素可能无法获取到，而使用v-show一定可以获取到。
+
+**<u>*ps:*</u>**template只能和v-if使用
+
+## 1.12列表渲染
+
+### 基本列表
+
+这里是用遍历数组举例
+
+~~~js
+<ul>
+	<li v-for="p in persons" :key='p.id'>
+    	{{p.name}}-{{p.age}}    
+    </li>    
+</ul>
+
+<ul>
+	<li v-for="(p,index) in/of persons" :key='index'>
+    	{{p.name}}-{{p.age}}    
+    </li>    
+</ul>
+new Vue({
+    data:{
+        persons:[
+            {id:'1',name:'1',age:15},{id:'2',name:'1',age:16},{id:'3',name:'1',age:17}
+        ]
+    }
+})
+~~~
+
+react一定要有v-for要有key
+
+1. 用于展示列表数据
+2. 语法:v-for="(item,index) in xxx" :key="yyy"
+3. 可遍历:数组、对象、字符串（用的很少)、指定次数（用的很少)
+
+### key原理
+
+用index破环顺序的操作
+
+<img src="https://tyangjian.oss-cn-shanghai.aliyuncs.com/tmp/202306081316524.png" alt="image-20230608131628360" style="zoom: 50%;" />
+
+用唯一标识不会出问题
+
+<img src="https://tyangjian.oss-cn-shanghai.aliyuncs.com/tmp/202306081318200.png" alt="image-20230608131846052" style="zoom: 50%;" />
+
+#### 面试题
+
+面试题: react、 vue中的key有什么作用?(key的内部原理)？
+
+1. 虚拟DOM中key的作用:
+
+	key是虚拟DOM对象的标识，当数据发生变化时，Vue会根据【新数据】生成【新的虚拟DON】,
+
+	随后Vue进行【新虚拟DOM】与【旧虚拟DOM】的差异比较，比较规则如下:
+
+2. 对比规则:
+
+	1. 旧虚拟DOM中找到了与新虚拟DOM相同的key:
+
+		- 若虚拟DOM中内容没变,直接使用之前的真实DOM !
+
+		- 若虚拟bow中内容变了，则生成新的真实DOM，随后替换掉页面中之前的真实DOM.
+
+	2. 旧虚拟DOM中未找到与新虚拟DOM相同的key
+
+		- 创建新的真实DOM，随后渲染到到页面。
+
+3. 用index作为key可能会引发的问题:
+
+	1. 若对数据进行:逆序添加、逆序删除等破坏顺序操作:
+
+		会产生没有必要的真实DOM更新==〉界面效果没问题,但效率低。
+
+	2. 如果结构中还包含输入类的DOM:
+
+		会产生错误DOM更新==>界面有问题。
+
+4. 开发中如何选择key?:
+
+	1. 最好使用每条数据的唯一标识作为key，比如id、手机号、身份证号、学号等唯一值。
+	2. 如果不存在对数据的逆序添加、逆序删除等破坏顺序操作，仅用于渲染列表用于展示,使用index作为key是没有问题的。
+
+### 列表过滤
+
+排序（改变原数据）+过滤（生成新数据）
+
+~~~js
+new Vue({
+    data:{
+        keyword:"",
+        sortType: 0, //0是原顺序 1降序 a-b 1升序b-a
+        persons:[
+            {id:'1',name:'张三',age:35},{id:'2',name:'李四',age:21},{id:'3',name:'王五',age:17}
+        ]
+    }，
+    computed:{
+    	filPersons:{
+    	  const arr = this.persons.filter((p)=>{
+    			return p.name.indexof(this.keywords)! ==-1
+			})
+         return arr
+		}
+	}
+})
+~~~
+
+### 列表排序
+
+~~~js
+new Vue({
+    data:{
+        keyword:"",
+        sortType: 0, //0是原顺序 1降序 b-a 1升序a-b
+        persons:[
+            {id:'1',name:'张三',age:35},{id:'2',name:'李四',age:21},{id:'3',name:'王五',age:17}
+        ]
+    }，
+    computed:{
+    	filPersons:{
+    	  const arr = this.persons.filter((p)=>{
+    			return p.name.indexof(this.keywords)! ==-1
+			})
+         // 判断是否需要排序
+          if(this.sortType){
+              arr.sort((p1,p2)=>{
+                  return this.sortType === 1 ? p2.age-p1.age : p1.age-p2.age
+              })
+          }
+		  return arr
+		}
+	}
+}) 
+~~~
+
+### 更新问题
+
+~~~js
+// 上述的persons
+methods:{
+    update(){
+       // this.persons[0].name = "12121" //奏效
+        persons[0] = {id:'1',name:'张三',age:14} // 不行
+    }
+}
+~~~
+
+### 监测数据的原理-对象
+
+本质就是从**<u>*data加工*</u>**==> **<u>*vm._data=data*</u>**
+
+~~~js
+let data = {
+    name: 'yovvis',
+    address: '苏州'
+}
+Object.defineProperty(data, 'name', {
+    get() {
+        return data.name;
+    },
+    set(val) {
+        data.name = val;
+    }
+})
+~~~
+
+上述代码会陷入死循环
+
+### 自定义监视器
+
+~~~js
+let data = {
+    name: 'yovvis',
+    address: '苏州'
+}
+
+// 创建一个监视实例的对象，用于监视data中属性的变化
+const obs = new Observer(data);
+
+// 准备vm实例对象
+let vm = {}
+vm._data = data = obs;
+
+function Observer(obj) {
+    // 汇总对象中所有属性为 数组
+    const keys = Object.keys(obj);
+    // 遍历
+    keys.forEach((k) => {
+        // 这里的this是observer
+        Object.defineProperty(this, k, {
+            get() {
+                return obj[k];
+            },
+            set(val) {
+                console.log("name值被改了，解析中，生成虚拟dom》》》");
+                obj[k] = val;
+            }
+        })
+    })
+}
+~~~
+
+### Vue.set使用
+
+Vue.set(vm.student,'sex','男')或者vm.$set(vm.student,'sex','男')
+
+此处set不能直接作用**<u>*data*</u>**下的属性或者是**<u>*响应式对象*</u>**
+
+### 监测数据的原理-数组
+
+上文**<u>*更新问题*</u>**其实如下
+
+vm._data.student.hobby[0] = '学习'
+
+- 实际上确实改了，但是Vue不认可，原因是数组里面的数据没有getter和setter
+
+- 一个数组操作 push(后加) pop(删尾)shift(删首) unshift(前加) splice(替换某个位置指定元素) sort(排序) reverse(反转) 
+
+- 通过**<u>*包装*</u>**检测，不是调用的Array.prototype.push
+- vue中的push做了两件事，先调原型Array。。。,然后重写解析模板，生成虚拟dom
+
+~~~js
+Vue.set(vm.student,index,'打台球')// 修改可以用set
+~~~
+
+### 大总结
+
