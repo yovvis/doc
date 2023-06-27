@@ -1375,7 +1375,7 @@ D:\vscode\myapp
 ### render
 
 ~~~js
-import Vue from 'Vue/Vue'
+import Vue from '前端技术栈/Vue/Vue'
 import App from './App.vue'
 
 Vue.config.productionTip = false //生产提示符
@@ -1608,7 +1608,7 @@ export default {
 main.js
 
 ~~~js
-import Vue from 'Vue/Vue'
+import Vue from '前端技术栈/Vue/Vue'
 import App from './App'
 import plugins from './plugin'
 
