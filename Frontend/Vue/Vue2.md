@@ -1375,13 +1375,13 @@ D:\vscode\myapp
 ### render
 
 ~~~js
-import Vue from '前端技术栈/Vue/Vue'
+import Vue from 'Frontend/Vue/Vue'
 import App from './App.vue'
 
 Vue.config.productionTip = false //生产提示符
 
 new Vue({
-    render: h => h(App),
+	render: h => h(App),
 }).$mount('#app')
 ~~~
 
@@ -1608,7 +1608,7 @@ export default {
 main.js
 
 ~~~js
-import Vue from '前端技术栈/Vue/Vue'
+import Vue from 'Frontend/Vue/Vue'
 import App from './App'
 import plugins from './plugin'
 
@@ -1616,7 +1616,7 @@ Vue.config.productionTip = false
 Vue.use(plugins)
 new Vue({
 
-    render: h => h(App)
+	render: h => h(App)
 
 }).$mount("#app")
 ~~~
