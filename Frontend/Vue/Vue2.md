@@ -1375,13 +1375,13 @@ D:\vscode\myapp
 ### render
 
 ~~~js
-import Vue from 'Vue/Vue'
+import Vue from 'Frontend/Vue/Vue'
 import App from './App.vue'
 
 Vue.config.productionTip = false //生产提示符
 
 new Vue({
-    render: h => h(App),
+	render: h => h(App),
 }).$mount('#app')
 ~~~
 
@@ -1608,7 +1608,7 @@ export default {
 main.js
 
 ~~~js
-import Vue from 'Vue/Vue'
+import Vue from 'Frontend/Vue/Vue'
 import App from './App'
 import plugins from './plugin'
 
@@ -1616,7 +1616,7 @@ Vue.config.productionTip = false
 Vue.use(plugins)
 new Vue({
 
-    render: h => h(App)
+	render: h => h(App)
 
 }).$mount("#app")
 ~~~
@@ -2910,5 +2910,197 @@ const router = new VueRouter({
 }
 ```
 
-## 6.6router-link
+## 6.6router-link的replace
 
+浏览器的历史记录（栈）push模式
+
+replace模式就是破坏push模式
+
+~~~vue
+<router-link replace :to="·/home/message/detail?id=${msg.id}&title=${msg.title}·">跳转</router-link>				
+~~~
+
+## 6.7编程式路由导航
+
+作用：不借助```<router-link> ```实现路由跳转，让路由跳转更加灵活
+
+~~~js
+method:{
+	pushShow(m){
+		this.$router.push({
+			name: '详情',
+            path: '/home/message/detail'
+			query:{
+				id:m.id,
+				title:m.title
+			}
+		})
+	},
+	replaveShow(m){
+		this.$router.replace({
+			name: '详情',
+			query:{
+				id:m.id,
+				title:m.title
+			}
+		})
+	}
+}
+~~~
+
+回退，前进
+
+~~~js
+methods: {
+    back() {
+      this.$router.back();
+    },
+    forward() {
+       this.$router.forward();
+    },
+  },
+~~~
+
+## 6.8缓存路由组件
+
+实际上我们切换组件的时候会销毁组件，缓存哪个路由组件
+
+1. 作用：让不展示的路由组件保持挂载，不被销毁。
+
+2. 具体编码：
+
+	```vue
+	<keep-alive include="News"> 
+	    <router-view></router-view>
+	</keep-alive>
+	
+	<keep-alive :include=["News","Messages"]> 
+	    <router-view></router-view>
+	</keep-alive>
+	```
+
+## 6.9新的生命周期钩子
+
+场景：
+
+- 缓存组件的里面使用了`定时器`，不触发销毁了
+- 两个新的钩子是路由组件独有的
+
+1. 作用：路由组件所独有的两个钩子，用于捕获路由组件的激活状态。
+2. 具体名字：
+	1. ```activated```路由组件被激活时触发。
+	2. ```deactivated```路由组件失活时触发。
+
+## 6.10路由守卫
+
+- 都是在`src/router/index.js`里面进行配置
+- 前置路由过滤之后有的标题要改
+- 独享是每个route里面的配置项
+
+1. 作用：对路由进行权限控制
+
+2. 分类：全局守卫、独享守卫、组件内守卫
+
+3. 全局守卫:
+
+	```js
+	//全局前置守卫：初始化时执行、每次路由切换前执行
+	router.beforeEach((to,from,next)=>{
+		console.log('beforeEach',to,from)
+		if(to.meta.isAuth){ //判断当前路由是否需要进行权限控制
+			if(localStorage.getItem('name') === 'yovvis'){ //权限控制的具体规则
+				next() //放行
+			}else{
+				alert('暂无权限查看')
+				// next({name:'guanyu'})
+			}
+		}else{
+			next() //放行
+		}
+	})
+	
+	//全局后置守卫：初始化时执行、每次路由切换后执行
+	router.afterEach((to,from)=>{
+		console.log('afterEach',to,from)
+		if(to.meta.title){ 
+			document.title = to.meta.title //修改网页的title
+		}else{
+			document.title = 'vue_test'
+		}
+	})
+	```
+
+4. 独享守卫:
+
+	```js
+	beforeEnter(to,from,next){
+		console.log('beforeEnter',to,from)
+		if(to.meta.isAuth){ //判断当前路由是否需要进行权限控制
+			if(localStorage.getItem('school') === 'atguigu'){
+				next()
+			}else{
+				alert('暂无权限查看')
+				// next({name:'guanyu'})
+			}
+		}else{
+			next()
+		}
+	}
+	```
+
+5. 组件内守卫：
+
+	```js
+	//进入守卫：通过路由规则，进入该组件时被调用
+	beforeRouteEnter (to, from, next) {
+	},
+	//离开守卫：通过路由规则，离开该组件时被调用
+	beforeRouteLeave (to, from, next) {
+	}
+	```
+
+***ps：***组件内守卫的离开是要切换另一个组件的时候调用，而不是像全局路由守卫点击组件前后都调用
+
+## 6.11路由器工作模式
+
+~~~js
+mode:'history'
+~~~
+
+1. 对于一个url来说，什么是hash值？—— #及其后面的内容就是hash值。
+
+2. hash值不会包含在 HTTP 请求中，即：hash值不会带给服务器。
+
+3. hash模式：
+
+	1. 地址中永远带着#号，不美观 。
+	2. 若以后将地址通过第三方手机app分享，若app校验严格，则地址会被标记为不合法。
+	3. 兼容性较好。
+
+4. history模式：
+
+	1. 地址干净，美观 。
+	2. 兼容性和hash模式相比略差。
+	3. 应用部署上线时需要后端人员支持，解决刷新页面服务端404的问题。(`每次刷新都会找服务器要资源`)
+
+	 
+
+### 简单创建一个本地服务器
+
+[node+express](https://juejin.cn/post/7248914499914317885)
+
+# UI组件库
+
+- PC端
+
+	[Element UI](https://element.eleme.cn/#/zh-CN/component/installation)
+
+	[IView UI](https://www.iviewui.com/view-ui-plus/guide/introduce)
+
+- pc端
+
+	[Vant4](https://vant-contrib.gitee.io/vant/#/zh-CN/)
+
+	[Cube UI](https://didi.github.io/cube-ui/#/zh-CN/docs/quick-start)
+
+	[Mint UI](http://mint-ui.github.io/docs/#/zh-cn2)
