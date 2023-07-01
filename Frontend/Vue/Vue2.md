@@ -1296,7 +1296,8 @@ npm config set cache "D:\evns\nodejs\node_modules\node_cache"
 npm config set registry https://registry.npm.taobao.org
 npm i -g yarn
 yarn config set registry https://registry.npm.taobao.org
-npm config get registry
+yarn config set prefix "D:\evns\nodejs\node_modules\yarn_cache"
+yarn config set global-folder "D:\evns\nodejs\node_modules\yarn_global"
 
 npm install -g @vue/cli
 vue create xxx
